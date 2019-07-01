@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post,Comment
 
 
 @admin.register(Post)
@@ -14,3 +14,7 @@ class PostAdmin(admin.ModelAdmin):
 	raw_id_fields=('author',)
 
 # Register your models here.
+class CommentAdmin(admin.ModelAdmin):
+	list_display=('name' ,'email','post','created','active')
+	list_filter=('created','updated','active')
+	search_fields=('name' ,'email','body')
